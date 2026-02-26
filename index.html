@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио — Степан Данилович</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <a href="#main" class="skip-link">Перейти к контенту</a>
+    
+    <header class="header">
+        <input type="checkbox" id="burger-cb" class="burger-checkbox" hidden aria-hidden="true">
+        <div class="logo">Portfolio</div>
+        <label class="burger" for="burger-cb" aria-label="Меню">
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+        </label>
+        <label class="nav-backdrop" for="burger-cb" aria-hidden="true"></label>
+        <nav id="main-nav" class="nav" aria-label="Основная навигация">
+            <a href="#main">Главная</a>
+            <a href="#portfolio">Портфолио</a>
+            <a href="#about">О себе</a>
+            <a href="#contact">Контакты</a>
+        </nav>
+    </header>
+
+    <main id="main">
+        <section class="hero" id="home">
+            <h1>Степан Данилович</h1>
+            <p class="subtitle">UI/UX Дизайнер</p>
+            <p class="description">Создаю интуитивные и красивые интерфейсы, которые решают бизнес-задачи и радуют пользователей</p>
+        </section>
+  
+        <section class="portfolio" id="portfolio">
+            <h2>Мои работы</h2>
+            <div class="gallery">
+                <article class="project-card">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=280&fit=crop" alt="Скриншот мобильного приложения для доставки еды с современным интерфейсом">
+                    <h3>Мобильное приложение</h3>
+                    <p>Дизайн интерфейса для доставки еды</p>
+                </article>
+                <article class="project-card">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=280&fit=crop" alt="Главная страница корпоративного веб-сайта IT-компании">
+                    <h3>Веб-сайт</h3>
+                    <p>Корпоративный сайт для IT-компании</p>
+                </article>
+                <article class="project-card">
+                    <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?w=400&h=280&fit=crop" alt="Фирменный стиль и логотип для технологического стартапа">
+                    <h3>Брендинг</h3>
+                    <p>Разработка фирменного стиля для стартапа</p>
+                </article>
+                <article class="project-card">
+                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=280&fit=crop" alt="Интерфейс интернет-магазина одежды с удобной навигацией">
+                    <h3>E-commerce</h3>
+                    <p>Дизайн интернет-магазина одежды</p>
+                </article>
+                <article class="project-card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=280&fit=crop" alt="Административная панель с графиками и аналитикой данных">
+                    <h3>Дашборд</h3>
+                    <p>Административная панель для аналитики</p>
+                </article>
+                <article class="project-card">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=280&fit=crop" alt="Промо-страница нового продукта с призывом к действию">
+                    <h3>Лендинг</h3>
+                    <p>Промо-страница для нового продукта</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <h2>О себе</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Я дизайнер с 5-летним опытом работы в области UI/UX дизайна. Специализируюсь на создании пользовательских интерфейсов для веб и мобильных приложений.</p>
+                    <p>Моя цель — создавать продукты, которые не только красиво выглядят, но и решают реальные проблемы пользователей. Я верю в силу дизайна, основанного на данных и исследованиях.</p>
+                    <p>Работаю с такими инструментами, как Figma, Adobe XD, Sketch, и постоянно изучаю новые технологии и тренды в дизайне.</p>
+                </div>
+                <div class="about-photo">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop" alt="Фотография Степана Даниловича, UI/UX дизайнера">
+                </div>
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <h2>Свяжитесь со мной</h2>
+            <form id="contact-form" novalidate>
+                <div class="form-group">
+                    <label for="name">Имя <span class="required">*</span></label>
+                    <input type="text" id="name" name="name" required aria-describedby="name-error">
+                    <span id="name-error" class="error-message" aria-live="polite" role="alert"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required aria-describedby="email-error">
+                    <span id="email-error" class="error-message" aria-live="polite" role="alert"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Сообщение</label>
+                    <textarea id="message" name="message" rows="5"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="newsletter" class="checkbox-label">
+                        <input type="checkbox" id="newsletter" name="newsletter">
+                        <span>Подписаться на рассылку</span>
+                    </label>
+                </div>
+                
+                <button type="submit">Отправить</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>Контакты:</p>
+        <p><a href="mailto:stepanrunner@gmail.com">stepanrunner@gmail.com</a></p>
+        <nav class="social" aria-label="Социальные сети">
+            <a href="https://www.behance.net" target="_blank" rel="noopener noreferrer">Behance</a>
+            <a href="https://dribbble.com" target="_blank" rel="noopener noreferrer">Dribbble</a>
+            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </nav>
+    </footer>
+
+    <script>
+        // Валидация формы
+        const form = document.getElementById('contact-form');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const nameError = document.getElementById('name-error');
+        const emailError = document.getElementById('email-error');
+
+        function validateName() {
+            if (nameInput.value.trim() === '') {
+                nameError.textContent = 'Пожалуйста, введите ваше имя';
+                nameInput.setAttribute('aria-invalid', 'true');
+                return false;
+            } else {
+                nameError.textContent = '';
+                nameInput.setAttribute('aria-invalid', 'false');
+                return true;
+            }
+        }
+
+        function validateEmail() {
+            const email = emailInput.value.trim();
+            if (email === '') {
+                emailError.textContent = 'Пожалуйста, введите ваш email';
+                emailInput.setAttribute('aria-invalid', 'true');
+                return false;
+            } else if (!emailInput.validity.valid) {
+                emailError.textContent = 'Пожалуйста, введите корректный email адрес';
+                emailInput.setAttribute('aria-invalid', 'true');
+                return false;
+            } else {
+                emailError.textContent = '';
+                emailInput.setAttribute('aria-invalid', 'false');
+                return true;
+            }
+        }
+
+        nameInput.addEventListener('blur', validateName);
+        nameInput.addEventListener('input', function() {
+            if (nameInput.value.trim() !== '') {
+                nameError.textContent = '';
+                nameInput.setAttribute('aria-invalid', 'false');
+            }
+        });
+
+        emailInput.addEventListener('blur', validateEmail);
+        emailInput.addEventListener('input', function() {
+            if (emailInput.value.trim() !== '' && emailInput.validity.valid) {
+                emailError.textContent = '';
+                emailInput.setAttribute('aria-invalid', 'false');
+            }
+        });
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const isNameValid = validateName();
+            const isEmailValid = validateEmail();
+
+            if (isNameValid && isEmailValid) {
+                alert('Форма успешно отправлена!');
+                form.reset();
+                nameError.textContent = '';
+                emailError.textContent = '';
+            } else {
+                if (!isNameValid) {
+                    nameInput.focus();
+                } else if (!isEmailValid) {
+                    emailInput.focus();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

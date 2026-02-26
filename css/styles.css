@@ -1,0 +1,591 @@
+/* Скрытая ссылка "Перейти к контенту" */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #1e90ff;
+    color: #fff;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 100;
+    font-weight: bold;
+}
+
+.skip-link:focus {
+    top: 0;
+    color: #fff;
+}
+
+/* Базовые стили (Mobile-first) */
+body {
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+/* Основной макет через CSS Grid с именованными областями */
+body {
+    display: grid;
+    grid-template-areas:
+        "header"
+        "main"
+        "footer";
+    grid-template-rows: auto 1fr auto;
+    gap: 0;
+    min-height: 100vh;
+}
+
+/* Header */
+.header {
+    grid-area: header;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    background-color: #fff;
+    border-bottom: 1px solid #e0e0e0;
+    position: relative;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1e90ff;
+    margin: 0;
+}
+
+/* Кнопка бургер-меню — видна только на мобильных */
+.burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 101;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+.burger:hover {
+    background: #f0f0f0;
+}
+.burger-line {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: #333;
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+}
+/* Состояние «крестик» при открытом меню (чекбокс отмечен) */
+.burger-checkbox:checked ~ .burger .burger-line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.burger-checkbox:checked ~ .burger .burger-line:nth-child(2) {
+    opacity: 0;
+}
+.burger-checkbox:checked ~ .burger .burger-line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Затемнение фона при открытом меню */
+.nav-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 98;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+.burger-checkbox:checked ~ .nav-backdrop {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+body:has(.burger-checkbox:checked) {
+    overflow: hidden;
+}
+
+/* Навигация: на мобильных — выезжающая панель справа */
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(280px, 85vw);
+    height: 100vh;
+    background: #fff;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+    z-index: 99;
+    padding: 5rem 1.5rem 2rem;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+.burger-checkbox:checked ~ .nav {
+    transform: translateX(0);
+}
+.nav a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #eee;
+    transition: color 0.3s;
+}
+.nav a:hover {
+    color: #1e90ff;
+}
+.nav a:last-child {
+    border-bottom: none;
+}
+
+nav {
+    display: flex;
+    width: auto;
+    align-items: stretch;
+}
+
+nav a {
+    padding: 0.5rem;
+}
+
+/* Видимый focus для интерактивных элементов */
+nav a:focus,
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+.burger:focus {
+    outline: 3px solid #1e90ff;
+    outline-offset: 2px;
+}
+
+/* Main */
+main {
+    grid-area: main;
+}
+
+/* Hero секция */
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: #f8f9fa;
+}
+
+.hero h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    color: #1e90ff;
+    margin-bottom: 1rem;
+    font-weight: normal;
+}
+
+.description {
+    font-size: 1rem;
+    color: #555;
+    max-width: 600px;
+}
+
+/* Портфолио */
+.portfolio {
+    padding: 2rem 1rem;
+}
+
+.portfolio h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #333;
+}
+
+/* Адаптивная галерея через auto-fit/minmax */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.project-card {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.project-card:focus-within {
+    outline: 3px solid #1e90ff;
+    outline-offset: 2px;
+}
+
+.project-card img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    display: block;
+}
+
+.project-card h3 {
+    font-size: 1.25rem;
+    margin: 1rem 1rem 0.5rem;
+    color: #333;
+}
+
+.project-card p {
+    margin: 0 1rem 1rem;
+    color: #555;
+    flex-grow: 1;
+}
+
+/* О себе - Grid внутри */
+.about {
+    padding: 2rem 1rem;
+    background-color: #f8f9fa;
+}
+
+.about h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #333;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    order: 2;
+}
+
+.about-text p {
+    color: #555;
+    font-size: 1rem;
+}
+
+.about-photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    order: 1;
+}
+
+.about-photo img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Форма обратной связи */
+.contact {
+    padding: 2rem 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #333;
+}
+
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+label {
+    font-weight: 500;
+    color: #333;
+}
+
+.required {
+    color: #d32f2f;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    padding: 0.75rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: Arial, sans-serif;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    border-color: #1e90ff;
+}
+
+input[type="text"]:invalid:not(:placeholder-shown),
+input[type="email"]:invalid:not(:placeholder-shown) {
+    border-color: #d32f2f;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+    width: 1.25rem;
+    height: 1.25rem;
+    cursor: pointer;
+}
+
+.error-message {
+    color: #d32f2f;
+    font-size: 0.875rem;
+    min-height: 1.5rem;
+}
+
+button[type="submit"] {
+    padding: 0.75rem 2rem;
+    background-color: #1e90ff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #1873cc;
+}
+
+button[type="submit"]:focus {
+    background-color: #1873cc;
+}
+
+button[type="submit"]:active {
+    background-color: #155a9f;
+}
+
+/* Footer */
+footer {
+    grid-area: footer;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 2rem 1rem;
+    width: 100%;
+}
+
+footer p {
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+footer a {
+    color: #66b3ff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+footer a:focus {
+    outline: 3px solid #66b3ff;
+    outline-offset: 2px;
+}
+
+.social {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social a {
+    color: #fff;
+    font-weight: 500;
+}
+
+.social a:hover {
+    color: #66b3ff;
+}
+
+/* Адаптивность для планшетов и десктопа (от 768px) */
+@media (min-width: 768px) {
+    .burger {
+        display: none;
+    }
+    .nav-backdrop {
+        display: none !important;
+    }
+    body:has(.burger-checkbox:checked) {
+        overflow: visible;
+    }
+    .nav {
+        position: static;
+        transform: none;
+        width: auto;
+        height: auto;
+        flex-direction: row;
+        padding: 0;
+        box-shadow: none;
+        background: transparent;
+        gap: 0;
+    }
+    .nav a {
+        border-bottom: none;
+        padding: 0.5rem;
+    }
+    header,
+    .header {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1.5rem 2rem;
+    }
+    .logo {
+        margin-bottom: 0;
+    }
+    nav {
+        flex-direction: row;
+        width: auto;
+        gap: 2rem;
+    }
+    
+    .hero {
+        padding: 3rem 2rem;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1.5rem;
+    }
+    
+    .description {
+        font-size: 1.2rem;
+    }
+    
+    .portfolio {
+        padding: 3rem 2rem;
+    }
+    
+    .portfolio h2 {
+        font-size: 2.5rem;
+    }
+    
+    .about {
+        padding: 3rem 2rem;
+    }
+    
+    .about h2 {
+        font-size: 2.5rem;
+    }
+    
+    .about-content {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .about-photo {
+        order: 2;
+    }
+    
+    .about-text {
+        order: 1;
+    }
+    
+    .contact {
+        padding: 3rem 2rem;
+    }
+    
+    .contact h2 {
+        font-size: 2.5rem;
+    }
+    
+    .social {
+        flex-direction: row;
+        justify-content: center;
+        gap: 2rem;
+    }
+}
+
+/* Адаптивность для десктопов (от 1024px) */
+@media (min-width: 1024px) {
+    body {
+        grid-template-areas:
+            "header header"
+            "main main"
+            "footer footer";
+    }
+    
+    .hero {
+        padding: 4rem 2rem;
+    }
+    
+    .hero h1 {
+        font-size: 3rem;
+    }
+    
+    .gallery {
+        gap: 2rem;
+    }
+}
+
+/* Изображения адаптивные */
+img {
+    max-width: 100%;
+    height: auto;
+}
